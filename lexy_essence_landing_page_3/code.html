@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../assets/lexy-global.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,700;1,400&amp;family=Manrope:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#afc8ee",
+                    "on-secondary-fixed": "#281719",
+                    "surface-container-high": "#e9e8e5",
+                    "surface-variant": "#e3e2e0",
+                    "on-tertiary-fixed-variant": "#8e004a",
+                    "secondary-fixed": "#fbdbde",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#efeeeb",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#faf9f6",
+                    "on-primary-fixed-variant": "#2f4868",
+                    "primary": "#00040c",
+                    "surface-container-highest": "#e3e2e0",
+                    "secondary-fixed-dim": "#debfc2",
+                    "on-surface-variant": "#43474e",
+                    "tertiary-container": "#42001f",
+                    "on-secondary-container": "#755d5f",
+                    "on-background": "#1a1c1a",
+                    "tertiary-fixed": "#ffd9e2",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "surface": "#faf9f6",
+                    "on-primary-fixed": "#001c39",
+                    "tertiary": "#0f0004",
+                    "outline": "#74777e",
+                    "primary-fixed": "#d3e3ff",
+                    "on-tertiary-fixed": "#3e001d",
+                    "primary-fixed-dim": "#afc8ee",
+                    "surface-tint": "#486081",
+                    "inverse-on-surface": "#f2f1ee",
+                    "on-secondary-fixed-variant": "#574144",
+                    "surface-container-low": "#f4f3f1",
+                    "on-tertiary-container": "#e7498a",
+                    "inverse-surface": "#2f312f",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#dbdad7",
+                    "outline-variant": "#c4c6ce",
+                    "secondary-container": "#f8d8db",
+                    "on-primary-container": "#6f87aa",
+                    "tertiary-fixed-dim": "#ffb1c8",
+                    "on-surface": "#1a1c1a",
+                    "background": "#faf9f6",
+                    "secondary": "#70585b",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#001e3c",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "160px",
+                    "stack-md": "24px",
+                    "container-max": "1280px",
+                    "stack-lg": "48px",
+                    "stack-sm": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Noto Serif"],
+                    "display-xl": ["Noto Serif"],
+                    "label-caps": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "headline-md": ["Noto Serif"],
+                    "body-md": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "display-xl": ["84px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .soft-lume {
+            box-shadow: 0 10px 40px -15px rgba(112, 88, 91, 0.08);
+        }
+        .text-reveal {
+            animation: reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        @keyframes reveal {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-kicker {
+            display: none;
+        }
+        @media (max-width: 1024px) {
+            .text-display-xl { font-size: clamp(2.4rem, 9vw, 5.25rem) !important; }
+            .text-headline-lg { font-size: clamp(2rem, 7vw, 3rem) !important; }
+            .py-section-gap { padding-top: 6rem !important; padding-bottom: 6rem !important; }
+            .px-8 { padding-left: 1rem !important; padding-right: 1rem !important; }
+        }
+        @media (max-width: 768px) {
+            .text-body-lg { font-size: 1rem !important; }
+            .max-w-4xl, .max-w-2xl { max-width: 100% !important; }
+        }
+    </style>
+</head>
+<body class="lexy-site bg-background text-on-surface selection:bg-rose-200">
+<!-- TopNavBar -->
+<nav class="sticky top-0 z-50 w-full bg-white/85 backdrop-blur-md lexy-nav-rose">
+<div class="mx-auto flex w-full max-w-screen-2xl flex-wrap items-center justify-between gap-4 px-4 py-5 sm:px-8 sm:py-6">
+<a class="text-xl font-serif font-light tracking-widest text-slate-900 hover:text-rose-600 dark:text-white sm:text-2xl" href="../index.html">Lexy Essence</a>
+<div class="flex flex-1 items-center justify-end gap-3 md:justify-between md:gap-8">
+<details class="lexy-mobile-nav relative md:hidden">
+<summary class="flex cursor-pointer list-none items-center justify-center rounded-full border border-rose-200 bg-white/95 px-3 py-2 text-slate-700 shadow-sm ring-1 ring-rose-100/80 hover:bg-rose-50">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</summary>
+<div class="absolute right-0 top-full z-[70] mt-2 w-[min(100vw-2rem,17rem)] rounded-2xl border border-rose-100 bg-white/98 p-3 shadow-2xl backdrop-blur-md">
+<a class="block rounded-lg px-3 py-2.5 text-xs font-serif uppercase tracking-wide text-slate-800 hover:bg-rose-50" href="../index.html">Inicio</a>
+<a class="block rounded-lg px-3 py-2.5 text-xs font-serif uppercase tracking-wide text-slate-600 hover:bg-rose-50" href="../lexy_essence_book_your_ritual/code.html">Reservas y experiencias</a>
+<a class="block rounded-lg px-3 py-2.5 text-xs font-serif uppercase tracking-wide text-slate-600 hover:bg-rose-50" href="../lexy_essence_collection_catalog/code.html">Productos</a>
+<a class="mt-2 block rounded-full bg-gradient-to-r from-rose-600 to-pink-600 px-4 py-3 text-center font-label-caps text-[10px] text-white uppercase tracking-widest shadow-md shadow-rose-300/30" href="../lexy_essence_book_your_ritual/code.html">Reservar</a>
+</div>
+</details>
+<div class="hidden flex-wrap items-center gap-6 md:flex lg:gap-10">
+<a class="lexy-link-hover font-serif text-sm uppercase tracking-wide text-slate-900 dark:border-white dark:text-white border-b border-slate-900 pb-1 dark:border-b" href="../index.html">Inicio</a>
+<a class="lexy-link-hover font-serif text-sm uppercase tracking-wide text-slate-500 dark:text-slate-400" href="../lexy_essence_book_your_ritual/code.html">Experiencias</a>
+<a class="lexy-link-hover font-serif text-sm uppercase tracking-wide text-slate-500 dark:text-slate-400" href="../lexy_essence_collection_catalog/code.html">Productos</a>
+</div>
+<a class="lexy-shimmer-btn hidden rounded-full bg-gradient-to-r from-rose-600 to-pink-600 px-5 py-2.5 font-label-caps text-[10px] text-white uppercase tracking-widest shadow-md shadow-rose-300/30 transition hover:scale-[1.03] sm:inline-flex sm:px-8 sm:py-3 sm:text-label-caps" href="../lexy_essence_book_your_ritual/code.html">Reservar</a>
+</div>
+</div>
+</nav>
+<main class="lexy-main-animate">
+<!-- Section 1: Hero -->
+<section class="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-rose-50/95 via-surface-container-low to-rose-100/50 pt-20">
+<div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(251,207,232,0.35),_transparent_55%)]"></div>
+<div class="relative z-10 mx-auto max-w-4xl px-6 text-center">
+<h1 class="font-display-xl text-display-xl text-on-surface mb-8 text-reveal">Beauty is an Inner Resonance</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10 text-reveal" style="animation-delay: 0.2s;">
+                    Discover the intersection of clinical expertise and sensory luxury. We curate experiences that celebrate your unique spirit.
+                </p>
+<div class="flex flex-col justify-center gap-4 text-reveal sm:flex-row sm:gap-6" style="animation-delay: 0.4s;">
+<a class="lexy-shimmer-btn inline-flex items-center justify-center rounded-full bg-gradient-to-r from-rose-600 to-pink-600 px-10 py-5 font-label-caps text-label-caps text-white shadow-lg shadow-rose-400/25 transition hover:scale-[1.03]" href="../lexy_essence_book_your_ritual/code.html">
+                        Reservar ahora
+                    </a>
+<a class="inline-flex items-center justify-center rounded-full border-2 border-rose-300 bg-white/80 px-10 py-5 font-label-caps text-label-caps text-primary backdrop-blur-sm transition hover:border-rose-400 hover:bg-rose-50" href="#experiences">
+                        Ver experiencias
+                    </a>
+</div>
+</div>
+</section>
+<!-- Section 2: The Experience -->
+<section class="py-section-gap px-8 max-w-container-max mx-auto" id="experiences">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center mb-stack-lg">
+<div class="md:col-span-5">
+<h2 class="font-headline-lg text-headline-lg mb-stack-md leading-tight">The Sanctum of Wellness</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-md">
+                        Our treatments are more than just services; they are experiences designed to restore your natural glow and mental clarity. We use a bespoke approach for every individual.
+                    </p>
+</div>
+<div class="md:col-span-6 md:col-start-7 flex justify-end">
+<span class="font-label-caps text-label-caps text-secondary-fixed-dim uppercase tracking-[0.2em] border-b border-secondary-fixed-dim pb-2">Professional Expertise</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Service 1 -->
+<div class="lexy-card-lift group relative overflow-hidden rounded-xl border border-rose-100/60 bg-gradient-to-br from-white/80 to-rose-50/40 p-8 glass-card soft-lume transition-all duration-500">
+<div class="mb-6">
+<span class="material-symbols-outlined text-4xl text-on-secondary-container">spa</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Facial Experiences</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Customized skincare solutions utilizing the purest botanical extracts and advanced technology.</p>
+<a class="font-label-caps text-label-caps text-primary border-b border-rose-400 pb-1 transition-colors group-hover:text-rose-600" href="../lexy_essence_book_your_ritual/code.html">Reservar</a>
+</div>
+<!-- Service 2 -->
+<div class="lexy-card-lift group relative overflow-hidden rounded-xl border border-rose-100/60 bg-gradient-to-br from-white/80 to-rose-50/40 p-8 glass-card soft-lume transition-all duration-500 md:mt-12">
+<div class="mb-6">
+<span class="material-symbols-outlined text-4xl text-on-secondary-container">content_cut</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Hair Styling</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Artistic direction for your tresses, from avant-garde transformations to classic elegance.</p>
+<a class="font-label-caps text-label-caps text-primary border-b border-rose-400 pb-1 transition-colors group-hover:text-rose-600" href="../lexy_essence_book_your_ritual/code.html">Reservar</a>
+</div>
+<!-- Service 3 -->
+<div class="lexy-card-lift group relative overflow-hidden rounded-xl border border-rose-100/60 bg-gradient-to-br from-white/80 to-rose-50/40 p-8 glass-card soft-lume transition-all duration-500">
+<div class="mb-6">
+<span class="material-symbols-outlined text-4xl text-on-secondary-container">self_care</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Body Rejuvenation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Signature massages and detoxification wraps that revitalize the spirit and soothe the senses.</p>
+<a class="font-label-caps text-label-caps text-primary border-b border-rose-400 pb-1 transition-colors group-hover:text-rose-600" href="../lexy_essence_book_your_ritual/code.html">Reservar</a>
+</div>
+</div>
+</section>
+<!-- Section 3: The Collection -->
+<section class="bg-surface-container-low py-section-gap overflow-hidden">
+<div class="px-8 max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<span class="font-label-caps text-label-caps text-on-tertiary-container mb-4 block">Curated Excellence</span>
+<h2 class="font-headline-lg text-headline-lg">The Essence Collection</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Product 1 -->
+<div class="bg-white p-4 rounded-lg soft-lume group">
+<div class="aspect-[3/4] overflow-hidden rounded mb-6 bg-surface">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A minimalist product shot of a high-end face oil bottle. The bottle is made of frosted glass with a gold dropper, sitting on a textured stone surface with soft morning light and long shadows. The overall aesthetic is clean, premium, and calm, using a palette of whites, creams, and pale pinks." src="https://lh3.googleusercontent.com/aida/ADBb0ujla34xhF62H5GcpbVti7vPyOwsuG2wHAqBuqYC7L34FQ-gEIX5hYLhf6fz-WZQUYyl34_ZwEENOI-_ySWcdISv4YLCuyjYxgTDhPcL_OgxqvaPeQva1CRZ_TxYoE8ucBBzwJmjBeHHoU_-Lms-I50aFqSjqW-Pil0IFuWnbymcY1q2j7z2i0xMNeN34uIruebH_1whyCkTf7Q6kuFcGTAEPucGiuriu-MkbhlTAhDF_hrILNex6IfO32Kd1dSA0K10_ITi357pOA"/>
+</div>
+<div class="text-center">
+<span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase mb-1 block">Serums</span>
+<h4 class="font-body-md font-semibold text-on-surface mb-2">Midnight Glow Elixir</h4>
+<p class="font-label-caps text-on-surface-variant mb-4">$120.00</p>
+<a class="block w-full py-3 border border-secondary text-secondary rounded-full font-label-caps text-[10px] hover:bg-secondary hover:text-white transition-all uppercase text-center" href="../lexy_essence_book_your_ritual/code.html">Reservar</a>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="bg-white p-4 rounded-lg soft-lume group md:translate-y-8">
+<div class="aspect-[3/4] overflow-hidden rounded mb-6 bg-surface">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A collection of artisan skincare jars arranged aesthetically on a silk cloth. Soft shadows and a warm sunset glow illuminate the scene. The visual style is editorial, high-fashion wellness, with a focus on tactile luxury and a soft pastel color palette." src="https://lh3.googleusercontent.com/aida/ADBb0ujla34xhF62H5GcpbVti7vPyOwsuG2wHAqBuqYC7L34FQ-gEIX5hYLhf6fz-WZQUYyl34_ZwEENOI-_ySWcdISv4YLCuyjYxgTDhPcL_OgxqvaPeQva1CRZ_TxYoE8ucBBzwJmjBeHHoU_-Lms-I50aFqSjqW-Pil0IFuWnbymcY1q2j7z2i0xMNeN34uIruebH_1whyCkTf7Q6kuFcGTAEPucGiuriu-MkbhlTAhDF_hrILNex6IfO32Kd1dSA0K10_ITi357pOA"/>
+</div>
+<div class="text-center">
+<span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase mb-1 block">Moisturizers</span>
+<h4 class="font-body-md font-semibold text-on-surface mb-2">Velvet Rose Cream</h4>
+<p class="font-label-caps text-on-surface-variant mb-4">$95.00</p>
+<a class="block w-full py-3 border border-secondary text-secondary rounded-full font-label-caps text-[10px] hover:bg-secondary hover:text-white transition-all uppercase text-center" href="../lexy_essence_book_your_ritual/code.html">Reservar</a>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="bg-white p-4 rounded-lg soft-lume group">
+<div class="aspect-[3/4] overflow-hidden rounded mb-6 bg-surface">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A sophisticated aesthetic setup featuring a single beauty product tube next to a blooming peony flower. The background is a soft, blurred beige interior. The lighting is ethereal and soft, emphasizing a high-end, feminine, and tranquil brand identity." src="https://lh3.googleusercontent.com/aida/ADBb0ujla34xhF62H5GcpbVti7vPyOwsuG2wHAqBuqYC7L34FQ-gEIX5hYLhf6fz-WZQUYyl34_ZwEENOI-_ySWcdISv4YLCuyjYxgTDhPcL_OgxqvaPeQva1CRZ_TxYoE8ucBBzwJmjBeHHoU_-Lms-I50aFqSjqW-Pil0IFuWnbymcY1q2j7z2i0xMNeN34uIruebH_1whyCkTf7Q6kuFcGTAEPucGiuriu-MkbhlTAhDF_hrILNex6IfO32Kd1dSA0K10_ITi357pOA"/>
+</div>
+<div class="text-center">
+<span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase mb-1 block">Fragrance</span>
+<h4 class="font-body-md font-semibold text-on-surface mb-2">Essence No. 7</h4>
+<p class="font-label-caps text-on-surface-variant mb-4">$185.00</p>
+<a class="block w-full py-3 border border-secondary text-secondary rounded-full font-label-caps text-[10px] hover:bg-secondary hover:text-white transition-all uppercase text-center" href="../lexy_essence_book_your_ritual/code.html">Reservar</a>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="bg-white p-4 rounded-lg soft-lume group md:translate-y-8">
+<div class="aspect-[3/4] overflow-hidden rounded mb-6 bg-surface">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Modern geometric beauty product packaging displayed in a grid-like fashion on a mirrored surface. Cool blue and soft pink highlights create a modern, glassmorphic feel. The lighting is crisp and professional, suggesting high-end laboratory-grade quality." src="https://lh3.googleusercontent.com/aida/ADBb0ujla34xhF62H5GcpbVti7vPyOwsuG2wHAqBuqYC7L34FQ-gEIX5hYLhf6fz-WZQUYyl34_ZwEENOI-_ySWcdISv4YLCuyjYxgTDhPcL_OgxqvaPeQva1CRZ_TxYoE8ucBBzwJmjBeHHoU_-Lms-I50aFqSjqW-Pil0IFuWnbymcY1q2j7z2i0xMNeN34uIruebH_1whyCkTf7Q6kuFcGTAEPucGiuriu-MkbhlTAhDF_hrILNex6IfO32Kd1dSA0K10_ITi357pOA"/>
+</div>
+<div class="text-center">
+<span class="font-label-caps text-[10px] text-secondary tracking-widest uppercase mb-1 block">Masks</span>
+<h4 class="font-body-md font-semibold text-on-surface mb-2">Mineral Clay Mask</h4>
+<p class="font-label-caps text-on-surface-variant mb-4">$78.00</p>
+<a class="block w-full py-3 border border-secondary text-secondary rounded-full font-label-caps text-[10px] hover:bg-secondary hover:text-white transition-all uppercase text-center" href="../lexy_essence_book_your_ritual/code.html">Reservar</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: About Us -->
+<section class="py-section-gap">
+<div class="px-8 max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<div class="relative">
+<div class="absolute -top-10 -left-10 w-40 h-40 bg-secondary-container/20 rounded-full blur-3xl"></div>
+<div class="relative rounded-2xl overflow-hidden aspect-square soft-lume">
+<img class="w-full h-full object-cover" data-alt="An artistic portrait of a serene woman with radiant, healthy skin, looking away with a slight smile. The lighting is soft and golden, highlighting natural textures and beauty. The composition is asymmetrical and modern, with a lot of negative space, following high-end magazine layout principles." src="https://lh3.googleusercontent.com/aida/ADBb0ujla34xhF62H5GcpbVti7vPyOwsuG2wHAqBuqYC7L34FQ-gEIX5hYLhf6fz-WZQUYyl34_ZwEENOI-_ySWcdISv4YLCuyjYxgTDhPcL_OgxqvaPeQva1CRZ_TxYoE8ucBBzwJmjBeHHoU_-Lms-I50aFqSjqW-Pil0IFuWnbymcY1q2j7z2i0xMNeN34uIruebH_1whyCkTf7Q6kuFcGTAEPucGiuriu-MkbhlTAhDF_hrILNex6IfO32Kd1dSA0K10_ITi357pOA"/>
+</div>
+<div class="absolute -bottom-8 -right-8 glass-card p-6 rounded-xl max-w-[240px] soft-lume hidden md:block">
+<p class="font-serif italic text-on-surface-variant text-sm">"We believe beauty is the outer manifestation of internal harmony and dedicated self-care."</p>
+</div>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-tertiary-container tracking-[0.3em] mb-6 block uppercase">Our Philosophy</span>
+<h2 class="font-headline-lg text-headline-lg mb-8 leading-tight">Authentic Essence, Modern Science</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">
+                        Lexy Essence was founded on the principle that luxury is not just an extravagance, but an essential component of a well-lived life. Our journey began with a simple quest for products that were as clean as they were effective.
+                    </p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-10 leading-relaxed">
+                        Today, we stand as a beacon of modern beauty, blending ancient botanical wisdom with cutting-edge dermatological advancements. Every service we offer and every product we craft is a testament to our commitment to your radiance.
+                    </p>
+<a class="inline-flex items-center gap-4 group" href="#experiences">
+<span class="font-label-caps text-label-caps border-b-2 border-primary pb-1 group-hover:pr-4 transition-all">Ver experiencias</span>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Section 5: Contact & Booking -->
+<section class="py-section-gap bg-primary text-on-primary">
+<div class="px-8 max-w-4xl mx-auto text-center">
+<h2 class="font-headline-lg text-headline-lg mb-8">Begin Your Experience</h2>
+<p class="font-body-lg text-body-lg mb-stack-lg opacity-80">
+                    Reserve your moment of serenity at our flagship center or inquire about our curated product collections.
+                </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left bg-white/5 p-12 rounded-2xl backdrop-blur-sm border border-white/10">
+<div class="space-y-8">
+<div>
+<p class="font-label-caps text-[10px] text-secondary-fixed tracking-[0.2em] mb-2 uppercase">Location</p>
+<p class="font-body-md">124 Lume Avenue, Luxury District<br/>Paris, France</p>
+</div>
+<div>
+<p class="font-label-caps text-[10px] text-secondary-fixed tracking-[0.2em] mb-2 uppercase">Inquiries</p>
+<p class="font-body-md">concierge@lexyessence.com<br/>+33 1 45 67 89 00</p>
+</div>
+<div class="pt-4">
+<div class="flex gap-4">
+<a class="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</a>
+<a class="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+</div>
+</div>
+</div>
+<form class="space-y-6">
+<div>
+<input class="w-full bg-transparent border-0 border-b border-white/30 py-3 focus:ring-0 focus:border-white transition-all placeholder:text-white/40" placeholder="Your Name" type="text"/>
+</div>
+<div>
+<input class="w-full bg-transparent border-0 border-b border-white/30 py-3 focus:ring-0 focus:border-white transition-all placeholder:text-white/40" placeholder="Email Address" type="email"/>
+</div>
+<div>
+<select class="w-full bg-transparent border-0 border-b border-white/30 py-3 focus:ring-0 focus:border-white transition-all text-white/40 appearance-none">
+<option>Select Service</option>
+<option>Facial Experience</option>
+<option>Hair Transformation</option>
+<option>Body Rejuvenation</option>
+</select>
+</div>
+<a class="mt-4 inline-block w-full rounded-full bg-white py-4 text-center font-label-caps text-label-caps uppercase tracking-widest text-primary transition-all hover:bg-secondary-fixed" href="../lexy_essence_book_your_ritual/code.html">
+                            Ir a reservar
+                        </a>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-rose-100 bg-gradient-to-b from-rose-50/80 to-slate-50 py-16 px-8 dark:border-slate-800 dark:from-slate-950 dark:to-slate-900">
+<div class="mx-auto flex max-w-7xl flex-col items-center gap-8 md:flex-row md:justify-between">
+<div class="text-center md:text-left">
+<a class="text-xl font-serif italic text-slate-900 hover:text-rose-600 dark:text-white" href="../index.html">Lexy Essence</a>
+<p class="mt-3 max-w-md text-center text-[11px] uppercase tracking-widest text-slate-400 dark:text-slate-500 md:text-left">
+<a class="hover:text-rose-500" href="../lexy_essence_book_your_ritual/code.html">Reservas y experiencias</a>
+</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6 md:gap-8">
+<a class="font-serif text-xs uppercase tracking-widest text-slate-400 transition-colors hover:text-rose-500 dark:text-slate-500" href="../index.html">Inicio</a>
+<a class="font-serif text-xs uppercase tracking-widest text-slate-400 transition-colors hover:text-rose-500 dark:text-slate-500" href="../lexy_essence_book_your_ritual/code.html">Experiencias</a>
+<a class="font-serif text-xs uppercase tracking-widest text-slate-400 transition-colors hover:text-rose-500 dark:text-slate-500" href="../lexy_essence_collection_catalog/code.html">Productos</a>
+</div>
+<div class="text-center font-serif text-xs uppercase tracking-widest text-slate-400 dark:text-slate-500 md:text-right">
+                © 2024 Lexy Essence. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

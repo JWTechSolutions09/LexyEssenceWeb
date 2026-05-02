@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../assets/lexy-global.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Noto+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#e3e2e0",
+                      "surface-container-high": "#e9e8e5",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e3e2e0",
+                      "on-background": "#1a1c1a",
+                      "surface-bright": "#faf9f6",
+                      "tertiary-fixed-dim": "#ffb1c8",
+                      "on-tertiary-fixed": "#3e001d",
+                      "on-secondary-container": "#755d5f",
+                      "secondary-fixed": "#fbdbde",
+                      "on-secondary-fixed": "#281719",
+                      "background": "#faf9f6",
+                      "outline-variant": "#c4c6ce",
+                      "tertiary-fixed": "#ffd9e2",
+                      "surface-container": "#efeeeb",
+                      "error-container": "#ffdad6",
+                      "tertiary": "#0f0004",
+                      "surface-dim": "#dbdad7",
+                      "on-primary-fixed-variant": "#2f4868",
+                      "on-primary-fixed": "#001c39",
+                      "primary": "#00040c",
+                      "primary-fixed-dim": "#afc8ee",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#f8d8db",
+                      "on-primary": "#ffffff",
+                      "inverse-surface": "#2f312f",
+                      "surface": "#faf9f6",
+                      "surface-tint": "#486081",
+                      "primary-fixed": "#d3e3ff",
+                      "on-error": "#ffffff",
+                      "primary-container": "#001e3c",
+                      "secondary": "#70585b",
+                      "on-surface-variant": "#43474e",
+                      "error": "#ba1a1a",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed-variant": "#574144",
+                      "outline": "#74777e",
+                      "on-primary-container": "#6f87aa",
+                      "inverse-primary": "#afc8ee",
+                      "on-surface": "#1a1c1a",
+                      "on-tertiary-container": "#e7498a",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-on-surface": "#f2f1ee",
+                      "on-tertiary-fixed-variant": "#8e004a",
+                      "tertiary-container": "#42001f",
+                      "surface-container-low": "#f4f3f1",
+                      "secondary-fixed-dim": "#debfc2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-gap": "160px",
+                      "gutter": "24px",
+                      "stack-lg": "48px",
+                      "stack-md": "24px",
+                      "stack-sm": "8px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Manrope"],
+                      "headline-md": ["Noto Serif"],
+                      "display-xl": ["Noto Serif"],
+                      "body-md": ["Manrope"],
+                      "headline-lg": ["Noto Serif"],
+                      "body-lg": ["Manrope"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "display-xl": ["84px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .soft-lume {
+            box-shadow: 0 10px 40px -10px rgba(112, 88, 91, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        @media (max-width: 1024px) {
+            .text-headline-lg { font-size: clamp(2rem, 7vw, 3rem) !important; }
+            .px-8 { padding-left: 1rem !important; padding-right: 1rem !important; }
+            .py-20 { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+        }
+        @media (max-width: 768px) {
+            .grid-cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+            .text-body-lg { font-size: 1rem !important; }
+        }
+        .booking-cal-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .booking-cal-inner {
+            min-width: min(100%, 320px);
+        }
+        @media (min-width: 640px) {
+            .booking-cal-inner { min-width: 0; }
+        }
+        #booking-feedback.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        @media (max-width: 480px) {
+            #booking-feedback.show {
+                left: 0.75rem;
+                right: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="lexy-site bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="sticky top-0 z-50 w-full bg-white/85 backdrop-blur-md lexy-nav-rose">
+<div class="mx-auto flex w-full max-w-screen-2xl flex-wrap items-center justify-between gap-4 px-4 py-5 sm:px-8 sm:py-6">
+<a class="text-xl font-serif font-light tracking-widest text-slate-900 hover:text-rose-600 sm:text-2xl" href="../index.html">Lexy Essence</a>
+<div class="flex flex-1 items-center justify-end gap-3 md:justify-between md:gap-8">
+<details class="lexy-mobile-nav relative md:hidden">
+<summary class="flex cursor-pointer list-none items-center justify-center rounded-full border border-rose-200 bg-white/95 px-3 py-2 text-slate-700 shadow-sm ring-1 ring-rose-100/80 hover:bg-rose-50">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</summary>
+<div class="absolute right-0 top-full z-[70] mt-2 w-[min(100vw-2rem,17rem)] rounded-2xl border border-rose-100 bg-white/98 p-3 shadow-2xl backdrop-blur-md">
+<a class="block rounded-lg px-3 py-2.5 text-xs font-serif uppercase tracking-wide text-slate-600 hover:bg-rose-50" href="../index.html">Inicio</a>
+<a class="block rounded-lg px-3 py-2.5 text-xs font-serif uppercase tracking-wide text-slate-800 hover:bg-rose-50" href="code.html">Reservas y experiencias</a>
+<a class="block rounded-lg px-3 py-2.5 text-xs font-serif uppercase tracking-wide text-slate-600 hover:bg-rose-50" href="../lexy_essence_collection_catalog/code.html">Productos</a>
+<a class="mt-2 block rounded-full bg-gradient-to-r from-rose-600 to-pink-600 px-4 py-3 text-center font-label-caps text-[10px] text-white uppercase tracking-widest shadow-md shadow-rose-300/30" href="#booking-flow">Reservar</a>
+</div>
+</details>
+<div class="hidden flex-wrap items-center gap-6 md:flex lg:gap-10">
+<a class="lexy-link-hover font-serif text-sm uppercase tracking-wide text-slate-500 dark:text-slate-400" href="../index.html">Inicio</a>
+<a class="lexy-link-hover font-serif text-sm uppercase tracking-wide text-slate-500 dark:text-slate-400" href="../lexy_essence_collection_catalog/code.html">Productos</a>
+<a class="lexy-link-hover font-serif text-sm uppercase tracking-wide text-slate-900 dark:border-white dark:text-white border-b border-slate-900 pb-1 dark:border-b" href="code.html">Experiencias</a>
+</div>
+<a class="lexy-shimmer-btn hidden rounded-full bg-gradient-to-r from-rose-600 to-pink-600 px-5 py-2.5 font-label-caps text-[10px] text-white uppercase tracking-widest shadow-md shadow-rose-300/30 transition hover:scale-[1.03] sm:inline-flex sm:px-8 sm:py-3 sm:text-label-caps" href="#booking-flow">Reservar</a>
+</div>
+</div>
+</nav>
+<main class="lexy-main-animate max-w-container-max mx-auto px-gutter py-20 min-h-screen" id="booking-flow">
+<div class="flex flex-col lg:grid lg:grid-cols-12 gap-12">
+<!-- Left Column: Booking Flow -->
+<div class="lg:col-span-8 space-y-section-gap/2">
+<!-- Hero & Intro -->
+<section>
+<h1 class="font-headline-lg text-headline-lg mb-4">Diseña tu experiencia</h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl">Elige entre nuestras experiencias insignia, pensadas para devolver la armonía y realzar tu esencia natural.</p>
+</section>
+<!-- 1. Service Selection -->
+<section class="space-y-stack-md" aria-label="Selección de experiencia">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<h2 class="font-headline-md text-headline-md italic">Las experiencias</h2>
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-secondary-container px-3 py-1 rounded-full whitespace-nowrap">Paso 1 de 4</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+<button type="button" data-service="facial" class="svc-card group relative rounded-xl border-2 border-transparent bg-surface-container-low p-6 text-left soft-lume transition-colors duration-500 hover:border-secondary-fixed-dim hover:bg-secondary-container/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400">
+<div class="mb-6 aspect-square overflow-hidden rounded-lg">
+<img class="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Cabina de tratamiento facial con luz natural" src="https://lh3.googleusercontent.com/aida/ADBb0ujla34xhF62H5GcpbVti7vPyOwsuG2wHAqBuqYC7L34FQ-gEIX5hYLhf6fz-WZQUYyl34_ZwEENOI-_ySWcdISv4YLCuyjYxgTDhPcL_OgxqvaPeQva1CRZ_TxYoE8ucBBzwJmjBeHHoU_-Lms-I50aFqSjqW-Pil0IFuWnbymcY1q2j7z2i0xMNeN34uIruebH_1whyCkTf7Q6kuFcGTAEPucGiuriu-MkbhlTAhDF_hrILNex6IfO32Kd1dSA0K10_ITi357pOA"/>
+</div>
+<h3 class="font-headline-md mb-2 text-body-lg">Experiencias faciales</h3>
+<p class="mb-4 font-body-md text-sm text-on-surface-variant">Tratamientos revitalizantes para una piel luminosa y saludable.</p>
+<span class="svc-card-label font-label-caps text-label-caps uppercase text-on-secondary-fixed-variant">Ver opciones</span>
+<span class="svc-card-check mt-3 hidden items-center gap-2 font-label-caps text-label-caps uppercase text-primary"><span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>Seleccionado</span>
+</button>
+<button type="button" data-service="hair" class="svc-card group relative rounded-xl border-2 border-primary bg-white p-6 text-left soft-lume transition-colors duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400">
+<div class="mb-6 aspect-square overflow-hidden rounded-lg">
+<div class="flex h-full w-full items-center justify-center bg-secondary-fixed">
+<span class="material-symbols-outlined text-4xl text-on-secondary-fixed">content_cut</span>
+</div>
+</div>
+<h3 class="font-headline-md mb-2 text-body-lg">Estilismo capilar</h3>
+<p class="mb-4 font-body-md text-sm text-on-surface-variant">Cortes precisos y color artesanal para un estilo contemporáneo.</p>
+<span class="svc-card-label hidden font-label-caps text-label-caps uppercase text-on-secondary-fixed-variant">Ver opciones</span>
+<span class="svc-card-check mt-3 flex items-center gap-2 font-label-caps text-label-caps uppercase text-primary"><span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>Seleccionado</span>
+</button>
+<button type="button" data-service="body" class="svc-card group relative rounded-xl border-2 border-transparent bg-surface-container-low p-6 text-left soft-lume transition-colors duration-500 hover:border-secondary-fixed-dim hover:bg-secondary-container/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400">
+<div class="mb-6 aspect-square overflow-hidden rounded-lg">
+<div class="flex h-full w-full items-center justify-center bg-tertiary-fixed">
+<span class="material-symbols-outlined text-4xl text-on-tertiary-fixed">spa</span>
+</div>
+</div>
+<h3 class="font-headline-md mb-2 text-body-lg">Renuevo corporal</h3>
+<p class="mb-4 font-body-md text-sm text-on-surface-variant">Masajes terapéuticos y envolturas para renovar cuerpo y mente.</p>
+<span class="svc-card-label font-label-caps text-label-caps uppercase text-on-secondary-fixed-variant">Ver opciones</span>
+<span class="svc-card-check mt-3 hidden items-center gap-2 font-label-caps text-label-caps uppercase text-primary"><span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>Seleccionado</span>
+</button>
+</div>
+</section>
+<!-- 2 & 3. Date & Staff Selection -->
+<section class="grid grid-cols-1 gap-12 pt-8 md:grid-cols-2">
+<!-- Calendar -->
+<div class="space-y-stack-md">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<h2 class="font-headline-md text-headline-md italic">La fecha</h2>
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-secondary-container px-3 py-1 rounded-full whitespace-nowrap">Paso 2</span>
+</div>
+<div class="booking-cal-wrap rounded-xl border border-surface-variant bg-white soft-lume">
+<div class="booking-cal-inner p-4 sm:p-8">
+<div class="mb-6 flex items-center justify-between gap-2">
+<button type="button" id="cal-prev" class="material-symbols-outlined rounded-full p-2 transition-colors hover:bg-rose-50 hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400" aria-label="Mes anterior">chevron_left</button>
+<h4 id="cal-month-label" class="min-w-0 flex-1 text-center font-headline-md text-base text-body-lg sm:text-lg"></h4>
+<button type="button" id="cal-next" class="material-symbols-outlined rounded-full p-2 transition-colors hover:bg-rose-50 hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400" aria-label="Mes siguiente">chevron_right</button>
+</div>
+<div id="cal-weekdays" class="mb-2 grid grid-cols-7 gap-1 text-center sm:gap-2" aria-hidden="true"></div>
+<div id="cal-days" class="grid grid-cols-7 gap-1 text-center sm:gap-2" role="grid" aria-label="Calendario"></div>
+</div>
+</div>
+</div>
+<!-- Staff Selection -->
+<div class="space-y-stack-md">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<h2 class="font-headline-md text-headline-md italic">Tu especialista</h2>
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-secondary-container px-3 py-1 rounded-full whitespace-nowrap">Paso 3</span>
+</div>
+<div class="space-y-4" role="radiogroup" aria-label="Especialista">
+<button type="button" data-specialist="elena" class="spec-row flex w-full cursor-pointer items-center rounded-xl border border-transparent bg-surface-container-low p-4 text-left transition-all hover:border-surface-variant hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400">
+<div class="mr-4 h-12 w-12 flex-shrink-0 rounded-full bg-secondary-fixed"></div>
+<div class="min-w-0 flex-grow">
+<h5 class="font-label-caps text-label-caps text-on-surface">Elena Vance</h5>
+<p class="text-[12px] text-on-surface-variant">Esteticista principal</p>
+</div>
+<span class="spec-icon material-symbols-outlined text-outline" aria-hidden="true">radio_button_unchecked</span>
+</button>
+<button type="button" data-specialist="julian" class="spec-row flex w-full cursor-pointer items-center rounded-xl border-2 border-primary bg-white p-4 text-left soft-lume transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400">
+<div class="mr-4 h-12 w-12 flex-shrink-0 rounded-full bg-tertiary-fixed"></div>
+<div class="min-w-0 flex-grow">
+<h5 class="font-label-caps text-label-caps text-on-surface">Julian Thorne</h5>
+<p class="text-[12px] text-on-surface-variant">Estilista capilar</p>
+</div>
+<span class="spec-icon material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">radio_button_checked</span>
+</button>
+<button type="button" data-specialist="sofia" class="spec-row flex w-full cursor-pointer items-center rounded-xl border border-transparent bg-surface-container-low p-4 text-left transition-all hover:border-surface-variant hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400">
+<div class="mr-4 h-12 w-12 flex-shrink-0 rounded-full bg-on-primary-fixed"></div>
+<div class="min-w-0 flex-grow">
+<h5 class="font-label-caps text-label-caps text-on-surface">Sofia Rossi</h5>
+<p class="text-[12px] text-on-surface-variant">Terapeuta corporal</p>
+</div>
+<span class="spec-icon material-symbols-outlined text-outline" aria-hidden="true">radio_button_unchecked</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 4. Time Slots -->
+<section class="space-y-stack-md pt-8">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<h2 class="font-headline-md text-headline-md italic">La hora</h2>
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-secondary-container px-3 py-1 rounded-full whitespace-nowrap">Paso 4</span>
+</div>
+<div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6" id="time-slots" role="group" aria-label="Franja horaria">
+<button type="button" data-time="09:00" class="time-slot rounded-lg border border-surface-variant py-3 px-2 font-label-caps text-[11px] transition-colors hover:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 touch-manipulation">09:00</button>
+<button type="button" data-time="10:30" class="time-slot rounded-lg border-2 border-primary bg-primary py-3 px-2 font-label-caps text-[11px] text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 touch-manipulation">10:30</button>
+<button type="button" data-time="11:15" class="time-slot rounded-lg border border-surface-variant py-3 px-2 font-label-caps text-[11px] transition-colors hover:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 touch-manipulation">11:15</button>
+<button type="button" data-time="13:00" class="time-slot rounded-lg border border-surface-variant py-3 px-2 font-label-caps text-[11px] transition-colors hover:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 touch-manipulation">13:00</button>
+<button type="button" data-time="14:30" class="time-slot rounded-lg border border-surface-variant py-3 px-2 font-label-caps text-[11px] transition-colors hover:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 touch-manipulation">14:30</button>
+<button type="button" data-time="16:00" class="time-slot rounded-lg border border-surface-variant py-3 px-2 font-label-caps text-[11px] transition-colors hover:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 touch-manipulation">16:00</button>
+</div>
+</section>
+</div>
+<!-- Right Column: Summary Sidebar -->
+<div class="lg:col-span-4 lg:sticky lg:top-32 h-fit">
+<div class="glass-panel rounded-2xl border border-rose-100/70 bg-white/60 p-6 shadow-lg shadow-rose-200/20 soft-lume backdrop-blur-md sm:p-8">
+<h3 class="font-headline-md text-headline-md italic mb-8">Resumen de la reserva</h3>
+<div class="space-y-6 pb-8 border-b border-surface-variant/30">
+<div class="flex justify-between items-start gap-3">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest shrink-0">Experiencia</span>
+<span id="summary-service" class="font-body-md font-semibold text-right">Corte y estilo luminoso</span>
+</div>
+<div class="flex justify-between items-start gap-3">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest shrink-0">Especialista</span>
+<span id="summary-specialist" class="font-body-md text-right">Julian Thorne</span>
+</div>
+<div class="flex justify-between items-start gap-3">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest shrink-0">Fecha y hora</span>
+<div class="text-right">
+<div id="summary-date" class="font-body-md"></div>
+<div id="summary-time" class="font-body-md text-slate-500"></div>
+</div>
+</div>
+<div class="flex justify-between items-start gap-3">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest shrink-0">Duración</span>
+<span id="summary-duration" class="font-body-md text-right">90 minutos</span>
+</div>
+</div>
+<div class="pt-8 space-y-6">
+<div class="flex justify-between items-center text-xl gap-2">
+<span class="font-headline-md italic">Total</span>
+<span id="summary-total" class="font-body-lg font-bold tabular-nums">185,00&nbsp;€</span>
+</div>
+<p class="text-[11px] text-on-secondary-fixed-variant leading-relaxed opacity-70">
+                            Al reservar, aceptas la política de cancelación con 24&nbsp;h de antelación. En franjas muy solicitadas puede solicitarse un depósito simbólico.
+                        </p>
+<button type="button" id="btn-confirm-booking" class="w-full bg-primary text-on-primary py-5 rounded-full font-label-caps text-label-caps uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400 touch-manipulation">
+                            Confirmar reserva
+                        </button>
+<div class="flex items-center justify-center space-x-2 text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span class="font-label-caps text-[10px]">Pago seguro cifrado</span>
+</div>
+</div>
+</div>
+<!-- Trust Elements -->
+<div class="mt-8 flex flex-col gap-3 px-2 text-on-surface-variant/70 italic text-sm sm:flex-row sm:items-center sm:space-x-4 sm:px-4">
+<span class="material-symbols-outlined shrink-0">star</span>
+<p class="font-body-md">«La atención al detalle en Lexy Essence no tiene parangón: un viaje transformador.» — Reseña editorial</p>
+</div>
+</div>
+</div>
+</main>
+<div id="booking-feedback" class="fixed bottom-4 left-4 right-4 z-[100] mx-auto max-h-[70vh] max-w-md overflow-y-auto rounded-2xl border border-rose-200 bg-white p-4 text-sm text-slate-800 shadow-2xl opacity-0 pointer-events-none transition-all duration-300 translate-y-4" role="status" aria-live="polite" aria-atomic="true"></div>
+<!-- Footer -->
+<footer class="w-full border-t border-rose-100 bg-gradient-to-b from-rose-50/80 to-slate-50 py-16 px-8">
+<div class="mx-auto flex max-w-7xl flex-col items-center gap-8 md:flex-row md:justify-between">
+<div class="text-center md:text-left">
+<a class="text-xl font-serif italic text-slate-900 hover:text-rose-600" href="../index.html">Lexy Essence</a>
+<p class="mt-3 text-[11px] uppercase tracking-widest text-slate-400">
+<a class="hover:text-rose-500" href="code.html">Reservas y experiencias</a>
+</p>
+</div>
+<div class="flex flex-wrap justify-center gap-6 md:gap-8">
+<a class="font-serif text-xs uppercase tracking-widest text-slate-400 transition-colors hover:text-rose-500" href="../index.html">Inicio</a>
+<a class="font-serif text-xs uppercase tracking-widest text-slate-400 transition-colors hover:text-rose-500" href="code.html">Experiencias</a>
+<a class="font-serif text-xs uppercase tracking-widest text-slate-400 transition-colors hover:text-rose-500" href="../lexy_essence_collection_catalog/code.html">Productos</a>
+</div>
+<div class="text-center font-serif text-xs uppercase tracking-widest text-slate-500 md:text-right">© 2024 Lexy Essence. Todos los derechos reservados.</div>
+</div>
+</footer>
+<script>
+(function () {
+  var SERVICES = {
+    facial: { summaryName: 'Experiencia facial premium', durationMin: 60, price: 145 },
+    hair: { summaryName: 'Corte y estilo luminoso', durationMin: 90, price: 185 },
+    body: { summaryName: 'Masaje y envoltura signature', durationMin: 75, price: 165 }
+  };
+  var SPECIALISTS = {
+    elena: { name: 'Elena Vance' },
+    julian: { name: 'Julian Thorne' },
+    sofia: { name: 'Sofia Rossi' }
+  };
+  var WEEKDAYS_ES = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+
+  function stripTime(d) {
+    var x = new Date(d);
+    x.setHours(0, 0, 0, 0);
+    return x;
+  }
+
+  function sameDay(a, b) {
+    return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+  }
+
+  function pad2(n) {
+    return (n < 10 ? '0' : '') + n;
+  }
+
+  function toLocalDateKey(d) {
+    var x = stripTime(d);
+    return x.getFullYear() + '-' + pad2(x.getMonth() + 1) + '-' + pad2(x.getDate());
+  }
+
+  function parseLocalDateKey(key) {
+    var p = key.split('-');
+    return stripTime(new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2])));
+  }
+
+  function specialistForService(sid) {
+    if (sid === 'facial') return 'elena';
+    if (sid === 'hair') return 'julian';
+    if (sid === 'body') return 'sofia';
+    return 'julian';
+  }
+
+  var today = stripTime(new Date());
+  var state = {
+    serviceId: 'hair',
+    specialistId: 'julian',
+    selectedDate: stripTime(new Date()),
+    selectedTime: '10:30',
+    viewMonth: new Date(today.getFullYear(), today.getMonth(), 1)
+  };
+
+  var calPrev = document.getElementById('cal-prev');
+  var calNext = document.getElementById('cal-next');
+  var calMonthLabel = document.getElementById('cal-month-label');
+  var calWeekdays = document.getElementById('cal-weekdays');
+  var calDays = document.getElementById('cal-days');
+  var summaryService = document.getElementById('summary-service');
+  var summarySpecialist = document.getElementById('summary-specialist');
+  var summaryDate = document.getElementById('summary-date');
+  var summaryTime = document.getElementById('summary-time');
+  var summaryDuration = document.getElementById('summary-duration');
+  var summaryTotal = document.getElementById('summary-total');
+  var feedback = document.getElementById('booking-feedback');
+
+  var moneyFmt = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' });
+  var dateLongFmt = new Intl.DateTimeFormat('es-ES', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+  var monthTitleFmt = new Intl.DateTimeFormat('es-ES', { month: 'long', year: 'numeric' });
+
+  function formatMoney(n) {
+    return moneyFmt.format(n);
+  }
+
+  function renderServiceCards() {
+    document.querySelectorAll('.svc-card').forEach(function (btn) {
+      var id = btn.getAttribute('data-service');
+      var sel = id === state.serviceId;
+      btn.classList.toggle('border-primary', sel);
+      btn.classList.toggle('border-transparent', !sel);
+      btn.classList.toggle('bg-white', sel);
+      btn.classList.toggle('bg-surface-container-low', !sel);
+      var label = btn.querySelector('.svc-card-label');
+      var check = btn.querySelector('.svc-card-check');
+      if (label) {
+        label.classList.toggle('hidden', sel);
+        label.classList.toggle('inline-block', !sel);
+      }
+      if (check) {
+        check.classList.toggle('hidden', !sel);
+        check.classList.toggle('flex', sel);
+      }
+      btn.setAttribute('aria-pressed', sel ? 'true' : 'false');
+    });
+  }
+
+  function renderSpecialists() {
+    document.querySelectorAll('.spec-row').forEach(function (btn) {
+      var id = btn.getAttribute('data-specialist');
+      var sel = id === state.specialistId;
+      btn.classList.toggle('border-primary', sel);
+      btn.classList.toggle('border-2', sel);
+      btn.classList.toggle('border-transparent', !sel);
+      btn.classList.toggle('bg-white', sel);
+      btn.classList.toggle('bg-surface-container-low', !sel);
+      btn.classList.toggle('soft-lume', sel);
+      var icon = btn.querySelector('.spec-icon');
+      if (icon) {
+        icon.textContent = sel ? 'radio_button_checked' : 'radio_button_unchecked';
+        icon.classList.toggle('text-primary', sel);
+        icon.classList.toggle('text-outline', !sel);
+        if (sel) icon.style.fontVariationSettings = "'FILL' 1";
+        else icon.style.fontVariationSettings = '';
+      }
+      btn.setAttribute('aria-checked', sel ? 'true' : 'false');
+    });
+  }
+
+  function renderTimeSlots() {
+    document.querySelectorAll('.time-slot').forEach(function (btn) {
+      var t = btn.getAttribute('data-time');
+      var sel = t === state.selectedTime;
+      btn.classList.toggle('border-primary', sel);
+      btn.classList.toggle('border-2', sel);
+      btn.classList.toggle('border-surface-variant', !sel);
+      btn.classList.toggle('bg-primary', sel);
+      btn.classList.toggle('text-white', sel);
+      btn.classList.toggle('text-on-surface', !sel);
+      btn.setAttribute('aria-pressed', sel ? 'true' : 'false');
+    });
+  }
+
+  function renderCalendar() {
+    var year = state.viewMonth.getFullYear();
+    var month = state.viewMonth.getMonth();
+    var first = new Date(year, month, 1);
+    var last = new Date(year, month + 1, 0);
+    var startPad = (first.getDay() + 6) % 7;
+    var prevMonthDays = new Date(year, month, 0).getDate();
+
+    calMonthLabel.textContent = monthTitleFmt.format(first);
+
+    calWeekdays.innerHTML = WEEKDAYS_ES.map(function (w) {
+      return '<div class="font-label-caps pb-2 text-[10px] text-slate-400">' + w + '</div>';
+    }).join('');
+
+    var cells = [];
+    var i;
+    for (i = 0; i < startPad; i++) {
+      cells.push({ inMonth: false, day: prevMonthDays - startPad + i + 1 });
+    }
+    for (i = 1; i <= last.getDate(); i++) {
+      cells.push({ inMonth: true, day: i, date: new Date(year, month, i) });
+    }
+    var nextM = 1;
+    while (cells.length % 7 !== 0) {
+      cells.push({ inMonth: false, day: nextM++ });
+    }
+
+    var html = '';
+    cells.forEach(function (cell) {
+      if (!cell.inMonth) {
+        html += '<div class="py-2 text-xs text-slate-300 sm:py-3">' + cell.day + '</div>';
+        return;
+      }
+      var cellDate = stripTime(cell.date);
+      var isPast = cellDate < today;
+      var isSel = state.selectedDate && sameDay(cellDate, state.selectedDate);
+      var isToday = sameDay(cellDate, today);
+      if (isPast) {
+        html +=
+          '<div class="py-2 text-xs text-slate-300 sm:py-3">' +
+          cell.day +
+          '</div>';
+        return;
+      }
+      var cls =
+        'calendar-day-btn rounded-lg py-2 text-sm touch-manipulation transition-colors sm:py-3 ';
+      if (isSel) cls += 'bg-primary font-semibold text-white ';
+      else {
+        cls += 'cursor-pointer hover:bg-secondary-container/30 ';
+        if (isToday) cls += 'ring-2 ring-rose-300 ';
+      }
+      html +=
+        '<button type="button" class="' +
+        cls +
+        '" data-cal-date="' +
+        toLocalDateKey(cell.date) +
+        '" aria-pressed="' +
+        (isSel ? 'true' : 'false') +
+        '">' +
+        cell.day +
+        '</button>';
+    });
+    calDays.innerHTML = html;
+
+    calDays.querySelectorAll('.calendar-day-btn').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var key = b.getAttribute('data-cal-date');
+        state.selectedDate = parseLocalDateKey(key);
+        renderCalendar();
+        updateSummary();
+      });
+    });
+  }
+
+  function updateSummary() {
+    var svc = SERVICES[state.serviceId];
+    var spec = SPECIALISTS[state.specialistId];
+    summaryService.textContent = svc.summaryName;
+    summarySpecialist.textContent = spec.name;
+    summaryDate.textContent = dateLongFmt.format(state.selectedDate);
+    summaryTime.textContent = state.selectedTime + ' h';
+    summaryDuration.textContent = svc.durationMin + ' minutos';
+    summaryTotal.textContent = formatMoney(svc.price);
+  }
+
+  function selectService(id) {
+    state.serviceId = id;
+    state.specialistId = specialistForService(id);
+    renderServiceCards();
+    renderSpecialists();
+    updateSummary();
+  }
+
+  function selectSpecialist(id) {
+    state.specialistId = id;
+    renderSpecialists();
+    updateSummary();
+  }
+
+  function selectTime(t) {
+    state.selectedTime = t;
+    renderTimeSlots();
+    updateSummary();
+  }
+
+  function showFeedback(html) {
+    feedback.innerHTML =
+      '<button type="button" class="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-lg leading-none text-slate-600 hover:bg-slate-200" aria-label="Cerrar">&times;</button>' +
+      '<div class="pr-8">' +
+      html +
+      '</div>';
+    feedback.classList.add('relative');
+    feedback.classList.add('show');
+    feedback.setAttribute('aria-hidden', 'false');
+    var closeBtn = feedback.querySelector('button[aria-label="Cerrar"]');
+    if (closeBtn) closeBtn.addEventListener('click', hideFeedback);
+  }
+
+  function hideFeedback() {
+    feedback.classList.remove('show');
+    feedback.setAttribute('aria-hidden', 'true');
+    feedback.innerHTML = '';
+    feedback.classList.remove('relative');
+  }
+
+  document.querySelectorAll('.svc-card').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      selectService(btn.getAttribute('data-service'));
+    });
+  });
+
+  document.querySelectorAll('.spec-row').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      selectSpecialist(btn.getAttribute('data-specialist'));
+    });
+  });
+
+  document.querySelectorAll('.time-slot').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      selectTime(btn.getAttribute('data-time'));
+    });
+  });
+
+  calPrev.addEventListener('click', function () {
+    state.viewMonth = new Date(state.viewMonth.getFullYear(), state.viewMonth.getMonth() - 1, 1);
+    renderCalendar();
+  });
+
+  calNext.addEventListener('click', function () {
+    state.viewMonth = new Date(state.viewMonth.getFullYear(), state.viewMonth.getMonth() + 1, 1);
+    renderCalendar();
+  });
+
+  document.getElementById('btn-confirm-booking').addEventListener('click', function () {
+    var svc = SERVICES[state.serviceId];
+    var spec = SPECIALISTS[state.specialistId];
+    var msg =
+      '<p class="mb-2 font-semibold text-rose-700">Reserva registrada (demo)</p>' +
+      '<ul class="list-inside list-disc space-y-1 text-slate-700">' +
+      '<li><strong>Experiencia:</strong> ' +
+      svc.summaryName +
+      '</li>' +
+      '<li><strong>Especialista:</strong> ' +
+      spec.name +
+      '</li>' +
+      '<li><strong>Fecha:</strong> ' +
+      dateLongFmt.format(state.selectedDate) +
+      '</li>' +
+      '<li><strong>Hora:</strong> ' +
+      state.selectedTime +
+      ' h</li>' +
+      '<li><strong>Total:</strong> ' +
+      formatMoney(svc.price) +
+      '</li>' +
+      '</ul>' +
+      '<p class="mt-3 text-xs text-slate-500">En un sitio real esto enviaría los datos al servidor. Aquí solo se muestra la confirmación.</p>';
+    showFeedback(msg);
+    feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  renderServiceCards();
+  renderSpecialists();
+  renderTimeSlots();
+  renderCalendar();
+  updateSummary();
+})();
+</script>
+</body></html>
